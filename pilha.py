@@ -33,6 +33,6 @@ class Pilha:
         pass
     
 
-    def get_size(self):
+    def get_size(self) -> int:
         # implementação do método
         pass
