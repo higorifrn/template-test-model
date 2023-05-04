@@ -6,8 +6,6 @@
 import os.path
 import sys
 from pilha import Pilha
-from problem_1 import main
-from io_aux_tests import *
 
 def test_pilha_vazia_true():
 
