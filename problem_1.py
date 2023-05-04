@@ -11,8 +11,16 @@ Processes:
 Output(s)
 """
 
+from pilha import Pilha
+
 def main():
-    pass # replace this line with all of your code
+    pilha = Pilha()
+
+    with open('entrada_dados.txt') as reader:
+        for item in reader:
+            pilha.push(item[:-1])
+
+    pilha.list_items()
     
 if __name__ == "__main__":
     main()
