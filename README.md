@@ -28,24 +28,73 @@ $ pytest test_1.py -v
 O pytest permite que você realize o teste sobre mais de um arquivo. Portanto, também é válido o comando:
 
 ```console
-$ pytest test_1.py test_2.py test_3.py test_4.py test_5.py test_6.py test_7.py -v
+$ pytest test_1.py test_2.py test_3.py test_4.py test_5.py test_6.py -v
 ```
-No caso de todos os testes falharem, o resultado de saída no terminal deverá ser algo como mostrado em: 
+No caso de todos os testes serem aprovados, o resultado de saída no terminal deverá ser algo como mostrado em: 
 
 ```console
-$ pytest test_1.py test_2.py test_3.py test_4.py test_5.py test_6.py test_7.py --no-header -v
-============================= test session starts =============================
-collected 7 items
+$ pytest test_1.py test_2.py test_3.py test_4.py test_5.py test_6.py -v --no-header
+==================================== test session starts =====================================
+collected 12 items                                                                           
 
-test_1.py::test_pilha_vazia_true FAILED                                 [ 14%]
-test_2.py::test_pilha_vazia_false FAILED                                [ 28%]
-test_3.py::test_pilha_push_cheia FAILED                                 [ 42%]
-test_4.py::test_pilha_peek FAILED                                       [ 57%]
-test_5.py::test_pilha_pop_com_itens FAILED                              [ 71%]
-test_6.py::test_pilha_pop_sem_itens FAILED                              [ 85%]
-test_7.py::test_pilha_list_items FAILED                                 [100%]
+test_1.py::test_pilha_is_empty_true PASSED                                             [  8%]
+test_1.py::test_pilha_is_empty_false PASSED                                            [ 16%]
+test_2.py::test_push_em_pilha_cheia PASSED                                             [ 25%]
+test_2.py::test_push_em_pilha_vazia PASSED                                             [ 33%]
+test_3.py::test_pilha_peek_com_itens PASSED                                            [ 41%]
+test_3.py::test_pilha_peek_sem_itens PASSED                                            [ 50%]
+test_4.py::test_pilha_pop_sem_itens PASSED                                             [ 58%]
+test_4.py::test_pilha_pop_com_itens PASSED                                             [ 66%]
+test_5.py::test_pilha_list_items_com_elementos PASSED                                  [ 75%]
+test_5.py::test_pilha_list_items_sem_elementos PASSED                                  [ 83%]
+test_6.py::test_pilha_get_size_com_itens PASSED                                        [ 91%]
+test_6.py::test_pilha_get_size_sem_itens PASSED                                        [100%]
 
-================================== FAILURES ===================================
+===================================== 12 passed in 0.06s =====================================
+```
+
+No caso de todos os testes falherem, o resultado de saída no terminal poderá ser algo como mostrado em: 
+
+```console
+$ pytest test_1.py test_2.py test_3.py test_4.py test_5.py test_6.py -v --no-header
+================================================= test session starts =================================================
+collected 12 items                                                                                                    
+
+test_1.py::test_pilha_is_empty_true PASSED                                                                      [  8%]
+test_1.py::test_pilha_is_empty_false PASSED                                                                     [ 16%]
+test_2.py::test_push_em_pilha_cheia PASSED                                                                      [ 25%]
+test_2.py::test_push_em_pilha_vazia FAILED                                                                      [ 33%]
+test_3.py::test_pilha_peek_com_itens PASSED                                                                     [ 41%]
+test_3.py::test_pilha_peek_sem_itens PASSED                                                                     [ 50%]
+test_4.py::test_pilha_pop_sem_itens PASSED                                                                      [ 58%]
+test_4.py::test_pilha_pop_com_itens PASSED                                                                      [ 66%]
+test_5.py::test_pilha_list_items_com_elementos PASSED                                                           [ 75%]
+test_5.py::test_pilha_list_items_sem_elementos PASSED                                                           [ 83%]
+test_6.py::test_pilha_get_size_com_itens PASSED                                                                 [ 91%]
+test_6.py::test_pilha_get_size_sem_itens PASSED                                                                 [100%]
+
+====================================================== FAILURES =======================================================
+______________________________________________ test_push_em_pilha_vazia _______________________________________________
+
+    def test_push_em_pilha_vazia():
+    
+        try:
+            exists = os.path.exists("pilha.py")
+            assert exists == True
+        except:
+            sys.exit()
+    
+        pilha = Pilha()
+    
+>       assert pilha.push(2) == True
+E       assert False == True
+E        +  where False = <bound method Pilha.push of <pilha.Pilha object at 0x1075b2f20>>(2)
+E        +    where <bound method Pilha.push of <pilha.Pilha object at 0x1075b2f20>> = <pilha.Pilha object at 0x1075b2f20>.push
+
+test_2.py:36: AssertionError
+=============================================== short test summary info ===============================================
+FAILED test_2.py::test_push_em_pilha_vazia - assert False == True
+============================================ 1 failed, 11 passed in 0.07s =============================================
 ```
 
 Para mais detalhes e informações sobre o framework consultar no [link](https://docs.pytest.org/en/7.3.x/contents.html).
