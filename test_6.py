@@ -22,7 +22,10 @@ def test_pilha_get_size_com_itens():
         for item in reader:
             pilha.push(item[:-1])
 
-    assert pilha.get_size() == 5
+    result = pilha.get_size()
+    expected = 5
+
+    assert result == expected
 
 
 def test_pilha_get_size_sem_itens():
@@ -35,4 +38,7 @@ def test_pilha_get_size_sem_itens():
 
     pilha = Pilha(5)
 
-    assert pilha.get_size() == 0
+    result = pilha.get_size()
+    expected = 0
+
+    assert result == expected
