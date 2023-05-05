@@ -28,7 +28,7 @@ class Pilha:
         pass
 
 
-    def list_items(self) -> str:
+    def list_items(self) -> list[str]:
         # implementação do método
         pass
     
